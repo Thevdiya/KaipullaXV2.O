@@ -141,6 +141,10 @@ class MirrorListener:
                 path = f'{DOWNLOAD_DIR}{self.uid}/{name}'
         else:
             path = f'{DOWNLOAD_DIR}{self.uid}/{name}'
+        if "www.1TamilMV.space" in path or "www.TamilBlasters.ink" in path or "www.HTPMovies.org" in path:
+            new_path = path.replace("www.1TamilMV.space", "").replace("www.TamilBlasters.ink", "").replace("www.HTPMovies.org", "")
+            os.rename(path, new_path)
+            path = new_path
         up_name = PurePath(path).name
         up_path = f'{DOWNLOAD_DIR}{self.uid}/{up_name}'
         if self.isLeech and not self.isZip:
