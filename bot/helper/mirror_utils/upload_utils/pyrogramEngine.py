@@ -1,4 +1,4 @@
-from logging import getLogger, ERROR
+Frome logging import getLogger, ERROR
 from os import remove as osremove, walk, path as ospath, rename as osrename
 from time import time, sleep
 from pyrogram.errors import FloodWait, RPCError
@@ -68,13 +68,13 @@ class TgUploader:
 
     def __upload_file(self, up_path, file_, dirpath):
         if CUSTOM_FILENAME is not None:
-            cap_mono = f"<b>{file_}\n\n◤ JOIN US ON TELEGRAM ◢\n\nTEAM - @Central_Links\nREQUEST - @Central_Request</b>"
+            cap_mono = f"<b>{CUSTOM_FILENAME} {file_}\n\n◤ JOIN US ON TELEGRAM ◢\n\nTEAM - @Central_Links\nREQUEST - @Central_Request</b>"
             file_ = f"{CUSTOM_FILENAME} {file_}"
             new_path = ospath.join(dirpath, file_)
             osrename(up_path, new_path)
             up_path = new_path
         else:
-            cap_mono = f"<b>{file_}\n\n◤ JOIN US ON TELEGRAM ◢\n\nTEAM - @Central_Links\nREQUEST - @Central_Request</b>"
+            cap_mono = f"<b>{CUSTOM_FILENAME} {file_}\n\n◤ JOIN US ON TELEGRAM ◢\n\nTEAM - @Central_Links\nREQUEST - @Central_Request</b>"
         notMedia = False
         thumb = self.__thumb
         self.__is_corrupted = False
