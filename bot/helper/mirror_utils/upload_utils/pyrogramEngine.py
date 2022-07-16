@@ -7,7 +7,7 @@ from threading import RLock
 from pyrogram import Client, enums
 
 from bot import DOWNLOAD_DIR, AS_DOCUMENT, AS_DOC_USERS, AS_MEDIA_USERS, CUSTOM_FILENAME, \
-                 EXTENTION_FILTER, app, LEECH_LOG, BOT_PM, tgBotMaxFileSize, rss_session
+                 EXTENTION_FILTER, app, LEECH_LOG, BOT_PM
 from bot.helper.ext_utils.fs_utils import take_ss, get_media_info, get_video_resolution, get_path_size
 from bot.helper.ext_utils.bot_utils import get_readable_file_size
 
@@ -67,6 +67,12 @@ class TgUploader:
         self.__listener.onUploadComplete(None, size, self.__msgs_dict, self.__total_files, self.__corrupted, self.name)
 
     def __upload_file(self, up_path, file_, dirpath):
+        if file_.startswith('www'):  
+            file_ = ' '.join(file_.split()[1:])
+            file_ = '@KaipullaVadiveluOffl' + file_.strip('-').strip('_')
+            new_path = ospath.join(dirpath, file_)
+            osrename(up_path, new_path)
+            up_path = new_path
         if CUSTOM_FILENAME is not None:
             cap_mono = f"<b>{CUSTOM_FILENAME} - {file_}</b>"
             file_ = f"{CUSTOM_FILENAME} {file_}"
