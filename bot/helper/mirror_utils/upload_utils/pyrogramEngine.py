@@ -68,19 +68,19 @@ class TgUploader:
 
     def __upload_file(self, up_path, file_, dirpath):
         if file_.startswith('www'):  
-            file_ = ''.join(file_.split()[1:])
+            file_ = ' '.join(file_.split()[1:])
             file_ = '' + file_.strip('-').strip('_')
             new_path = ospath.join(dirpath, file_)
             osrename(up_path, new_path)
             up_path = new_path
         if CUSTOM_FILENAME is not None:
-            cap_mono = f"<b>{file_}</b>"
+            cap_mono = f"<b>{CUSTOM_FILENAME}{file_}</b>"
             file_ = f"{CUSTOM_FILENAME} {file_}"
             new_path = ospath.join(dirpath, file_)
             osrename(up_path, new_path)
             up_path = new_path
         else:
-            cap_mono = f"<b>{file_}</b>"
+            cap_mono = f"<b>{CUSTOM_FILENAME}{file_}</b>"
         notMedia = False
         thumb = self.__thumb
         self.__is_corrupted = False
