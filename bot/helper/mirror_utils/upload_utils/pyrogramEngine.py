@@ -7,7 +7,7 @@ from threading import RLock
 from pyrogram import Client, enums
 
 from bot import DOWNLOAD_DIR, AS_DOCUMENT, AS_DOC_USERS, AS_MEDIA_USERS, CUSTOM_FILENAME, \
-                 EXTENTION_FILTER, app, LEECH_LOG, BOT_PM
+                 EXTENTION_FILTER, app, LEECH_LOG, BOT_PM, tgBotMaxFileSize, rss_session
 from bot.helper.ext_utils.fs_utils import take_ss, get_media_info, get_video_resolution, get_path_size
 from bot.helper.ext_utils.bot_utils import get_readable_file_size
 
@@ -204,7 +204,9 @@ class TgUploader:
                         return
                 if len(LEECH_LOG) != 0:
                     for leechchat in self.__leech_log:
-                        self.__sent_msg = self.__app.send_document(chat_id=leechchat,document=up_path,
+                if ospath.getsize(up_path) > tgBotMaxFileSize: usingclient = rss_session
+                else: usingclient = self.__app
+                self.__sent_msg = usingclient.send_document(chat_id=LOG_LEECH,
                                                                  thumb=thumb,
                                                                  caption=cap_mono,
                                                                  disable_notification=True,
