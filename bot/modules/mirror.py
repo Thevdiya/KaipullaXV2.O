@@ -3,7 +3,6 @@ from requests import utils as rutils
 from re import match as re_match, search as re_search, split as re_split
 from time import sleep, time
 from os import path as ospath, remove as osremove, listdir, walk
-import os
 from shutil import rmtree
 from threading import Thread
 from subprocess import run as srun
@@ -142,10 +141,6 @@ class MirrorListener:
                 path = f'{DOWNLOAD_DIR}{self.uid}/{name}'
         else:
             path = f'{DOWNLOAD_DIR}{self.uid}/{name}'
-        if "www.1TamilMV.space - " in path or "www.TamilBlasters.ink - " in path or "www.HTPMovies.org - " in path or "www.1TamilMV.click - " in path or "www.1TamilMV.Click - " in path:
-            new_path = path.replace("www.1TamilMV.space - ", "").replace("www.TamilBlasters.ink - ", "").replace("www.HTPMovies.org - ", "").replace("www.1TamilMV.Click - ", "").replace("www.1TamilMV.click - ", "")
-            os.rename(path, new_path)
-            path = new_path
         up_name = PurePath(path).name
         up_path = f'{DOWNLOAD_DIR}{self.uid}/{up_name}'
         if self.isLeech and not self.isZip:
