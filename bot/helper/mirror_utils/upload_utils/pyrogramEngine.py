@@ -75,7 +75,7 @@ class TgUploader:
             up_path = new_path
         if CUSTOM_FILENAME is not None:
             cap_mono = f"<b>{CUSTOM_FILENAME}{file_.rsplit('.', 1)[0]}</b>"
-            file_ = f"{CUSTOM_FILENAME} {file_}"
+            file_ = f"{CUSTOM_FILENAME}{file_}"
             new_path = ospath.join(dirpath, file_)
             osrename(up_path, new_path)
             up_path = new_path
