@@ -58,7 +58,7 @@ class TgUploader:
                     if self.__is_cancelled:
                         return
                     if not self.__listener.isPrivate and not self.__is_corrupted:
-                        self.__msgs_dict[self.__sent_msg.link] = file_
+                        self.__msgs_dict[self.__sent_msg.id] = file_
                     self._last_uploaded = 0
                     sleep(1)
         if self.__total_files <= self.__corrupted:
