@@ -157,6 +157,7 @@ try:
     OWNER_ID = int(getConfig('OWNER_ID'))
     AUTO_DELETE_MESSAGE_DURATION = int(getConfig('AUTO_DELETE_MESSAGE_DURATION'))
     TELEGRAM_API = getConfig('TELEGRAM_API')
+    TG_STREAM_LINK = getConfig('TG_STREAM_LINK')
     TELEGRAM_HASH = getConfig('TELEGRAM_HASH')
 except:
     LOGGER.error("One or more env variables missing! Exiting now")
