@@ -264,7 +264,7 @@ class MirrorListener:
             else:
                 fmsg = ''
                 for index, (link, name) in enumerate(files.items(), start=1):
-                    fmsg += f"{index}. <a href='{link}'>{name}</a>\n"
+                    fmsg += f"{index}. <a href='{TG_STREAM_LINK + str(link)}'>{name}</a>\n"
                     if len(fmsg.encode() + msg.encode()) > 4000:
                         uploadmsg = sendMarkup(msg + fmsg, self.bot, self.message, InlineKeyboardMarkup(buttons.build_menu(2)))
                         sleep(1)
